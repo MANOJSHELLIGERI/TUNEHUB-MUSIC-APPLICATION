@@ -1,0 +1,36 @@
+@charset "UTF-8";
+body {
+  background-color: antiquewhite; /* Set background color to antique white */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  margin-top: 20px; /* Space between heading and buttons */
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+a.button {
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  background-color: #007bff; /* Change to your desired button color */
+  color: #fff;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+a.button:hover {
+  background-color: #0056b3; /* Change to your desired button hover color */
+}

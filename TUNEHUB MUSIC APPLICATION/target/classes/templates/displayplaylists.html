@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="StyleSheet" th:href="@{/CSS/displayPlaylist.css}">
+
+</head>
+<body>
+  <div class="container">
+    <h1>Playlists</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Songs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="plist:${allPlaylists}">
+          <td th:text="${plist.name}"></td>
+          <td>
+            <ul>
+              <li th:each="song, songStat : ${plist.songs}" th:id="'song_' + ${songStat.index}">
+                <span th:text="${song.name}"></span>
+                <audio controls onplay="stopOtherSongs(${songStat.index})">
+                  <source th:src="${song.link}" type="audio/mpeg">
+                </audio>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<script>
+function stopOtherSongs(index) {
+    // Get all audio elements
+    var audioElements = document.getElementsByTagName('audio');
+    
+    // Iterate through all audio elements
+    for (var i = 0; i < audioElements.length; i++) {
+        // Check if the current audio element is not the one being played and pause it
+        if (i !== index) {
+            audioElements[i].pause();
+        }
+    }
+}
+</script>
+</body>
+</html>
